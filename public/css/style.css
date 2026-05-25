@@ -1,0 +1,152 @@
+*{
+    margin: 0; /* remove default margin */
+    padding: 0; /* remove default padding */
+    box-sizing: border-box; /* include padding and border in the elements */
+    list-style: none; /* remove bullet from lists */
+    text-decoration: none; /* remove underlined from links */
+    font-family: 'Roboto', sans-serif; /* declare global font */
+    scroll-behavior: smooth; /*to smooth scrolling when clicking links */
+}
+:root {
+    --bg-dark: #0a0a0a; /* main background */
+    --bg-card: #141414; /* card background */
+    --primary: #ff3c00;   /* orange-red */
+    --secondary: #ff0000; /* pure red */
+    --text: #ffffff;    /* main text color */
+}
+
+/* nav section  */
+header{
+    width: 100%;
+    position: sticky; /* Sticky header stays at top when scrolling */
+    top: 0;
+    z-index: 999; /* to keep above every other elements */
+}
+
+/* Navbar container */
+nav{
+    display: flex; /* flex box layout */
+    justify-content: space-between; /* space between logo and links */
+    align-items: center;    /* vertically center items */
+    padding: 8px;
+    background-color:#0d0d0d;
+}
+
+/* Logo styling */
+nav .logo{
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-left: 16px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+/* Logo hover effect */
+nav .logo:hover{
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary);
+}
+
+/* Icon spacing */
+nav i{
+    margin-right: 5px; 
+}
+
+/* Navigation links container */
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* space between links */
+    margin-right: 20px;
+}
+
+/* Each nav item */
+.nav-link li{
+    position: relative; /* needed for underlined animation */
+
+}
+
+/* Link style */
+.nav-link a{
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+/* Underline animation (hidden by default) */
+.nav-link a::after{
+    content: "";
+    height: 2px;
+    width: 0; /* start with invisiable */
+    position: absolute;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    bottom: -4px;
+    left: 0;
+    transition: 0.5s;
+}
+
+/* On hover, expand underline */
+.nav-link a:hover::after{
+    width: 100%;
+    
+}
+/* nav section end */
+
+/* cover section  */
+.hero-container{
+    width: 100%;
+    min-height: 90vh; /* full screen size */
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+
+/* Background image */
+.hero-container img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* behind content */
+    object-fit: cover; /* fill without distortion */
+    opacity: 1; /* reduce brightness */
+}
+
+
+/* Centered text */
+.hero-container .hero-text{
+    margin-left: 30px; 
+}
+.hero-text h1{
+    font-size: 3rem;
+    font-weight: 800;
+}
+.hero-text p{
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Button styling */
+.hero-text .btn{
+    display: inline-block;
+    color: #ffffff;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    box-shadow: 0 0 10px rgba(255, 60, 0, 0.5);
+    padding: 0.7rem 1.7rem;
+    border: none;
+    border-radius: 4rem;
+    font-size: 20px;
+    transition: 0.5s ease-in-out;
+
+}
+
+/* Button hover effect */
+.hero-text .btn:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 60, 0, 0.8);
+
+}
+/* cover section end */

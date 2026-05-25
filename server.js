@@ -12,6 +12,9 @@ app.use(express.static('public')); // use the public folder
 
 app.set('db',pool); //save database to app
 
+const homeRoute = require('./routes/index');
+app.use('/',homeRoute);
+
 app.listen('3000' , (req,res) => {
     console.log("We are listening on port number 3000");
     
