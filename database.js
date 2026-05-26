@@ -11,10 +11,12 @@ const pool = sql.createPool({ //create pool for credentials
 //check database status using query
 pool.query('SELECT * FROM products', (err, results) => { 
     if (err) {
-        console.error('Database connection failed. ' + err.message);
+        console.error('Database connection failed. ' + err);
         return;
+    }else{
+        console.log(results);
     }
-    console.log(results);
+    
 });
 
 
