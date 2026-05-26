@@ -17,7 +17,7 @@
             
             <ul class="nav-link">
                 <li><a href="">Home</a></li>
-                <li><a href="">Products</a></li>
+                <li><a href="#products">Products</a></li>
                 <li><a href=""><i class="fa-solid fa-cart-arrow-down"></i>Cart</a></li>
                 <li><a href="">About</a></li>
             </ul>
@@ -28,7 +28,7 @@
     <!-- hero section  -->
      <section>
         <div class="hero-container">
-            <img src="./images/cover.webp" alt="">
+            <img src="./images/a_vibrant_hero_banner_for_a_video_game_store_website._a_high_energy_montage_of.png" alt="">
             <div class="hero-text">
                 <h1>God Of War</h1>
                 <p>Release Date : 2026-05-25</p>
@@ -38,12 +38,33 @@
      </section>
     <!-- hero section ends -->
 
+      <!-- category section  -->
+     <section>
+        <h2>Our Games</h2>
+        <div class="category-btn">
+            <button onclick="loadCategory('RPG')">RPG</button>
+
+            <button onclick="loadCategory('Shooter')">Shooter</button>
+
+            <button onclick="loadCategory('Sports')">Sports</button>
+
+            <button onclick="loadCategory('Racing')">Racing</button>
+       </div>
+
+    
+            
+        </div>
+     </section>
+    <!-- category section ends -->
+
     <!-- new releases section  -->
-    <section>
-        <h2>New Releases</h2>
+    <section id="products">
+        <!-- <h2>Our Games</h2> -->
         <div class="content" id="content"></div>
     </section>
     <!-- new releases section  ends-->
+
+  
     <script src="./js/app.js"></script>
 </body>
 </html>

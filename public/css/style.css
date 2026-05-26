@@ -7,16 +7,20 @@
     font-family: 'Roboto', sans-serif; /* declare global font */
     scroll-behavior: smooth; /*to smooth scrolling when clicking links */
 }
+/* Define CSS Variables at the top */
 :root {
-    --bg-dark: #0a0a0a; /* main background */
-    --bg-card: #141414; /* card background */
-    --primary: #ff3c00;   /* orange-red */
-    --secondary: #ff0000; /* pure red */
-    --text: #ffffff;    /* main text color */
+    --primary: #BD00FF;
+    --secondary: #00F0FF;
+    --tertiary: #7000FF;
+    --neutral: #0A0A0C;
+}
+
+body{
+    background-color: var(--neutral);
 }
 
 /* nav section  */
-header{
+header {
     width: 100%;
     position: sticky; /* Sticky header stays at top when scrolling */
     top: 0;
@@ -24,16 +28,16 @@ header{
 }
 
 /* Navbar container */
-nav{
+nav {
     display: flex; /* flex box layout */
     justify-content: space-between; /* space between logo and links */
     align-items: center;    /* vertically center items */
     padding: 8px;
-    background-color:#0d0d0d;
+    background-color: var(--neutral); /* Used your neutral color here */
 }
 
 /* Logo styling */
-nav .logo{
+nav .logo {
     color: #ffffff;
     font-size: 1.5rem;
     font-weight: 600;
@@ -43,13 +47,13 @@ nav .logo{
 }
 
 /* Logo hover effect */
-nav .logo:hover{
+nav .logo:hover {
     color: var(--primary);
     text-shadow: 0 0 10px var(--primary);
 }
 
 /* Icon spacing */
-nav i{
+nav i {
     margin-right: 5px; 
 }
 
@@ -62,13 +66,12 @@ nav i{
 }
 
 /* Each nav item */
-.nav-link li{
+.nav-link li {
     position: relative; /* needed for underlined animation */
-
 }
 
 /* Link style */
-.nav-link a{
+.nav-link a {
     color: #ffffff;
     font-size: 16px;
     font-weight: 400;
@@ -76,10 +79,10 @@ nav i{
 }
 
 /* Underline animation (hidden by default) */
-.nav-link a::after{
+.nav-link a::after {
     content: "";
     height: 2px;
-    width: 0; /* start with invisiable */
+    width: 0; /* start invisible */
     position: absolute;
     background: linear-gradient(45deg, var(--primary), var(--secondary));
     bottom: -4px;
@@ -88,115 +91,141 @@ nav i{
 }
 
 /* On hover, expand underline */
-.nav-link a:hover::after{
+.nav-link a:hover::after {
     width: 100%;
-    
 }
 /* nav section end */
 
 /* cover section  */
-.hero-container{
+.hero-container {
     width: 100%;
-    min-height: 90vh; /* full screen size */
+    min-height: 100vh; /* full screen size */
     position: relative;
     display: flex;
     align-items: center;
+    /* background-color: var(--neutral); fallback color */
 }
 
-
 /* Background image */
-.hero-container img{
+.hero-container img {
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: -1; /* behind content */
     object-fit: cover; /* fill without distortion */
-    opacity: 1; /* reduce brightness */
+    opacity: 1; /* Fixed: Reduced opacity so text is readable */
 }
-
 
 /* Centered text */
-.hero-container .hero-text{
+.hero-container .hero-text {
     margin-left: 30px; 
+    color: #ffffff; /* Ensures text is visible on dark background */
 }
-.hero-text h1{
+.hero-text h1 {
     font-size: 3rem;
     font-weight: 800;
 }
-.hero-text p{
+.hero-text p {
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 20px;
 }
 
 /* Button styling */
-.hero-text .btn{
+.hero-text .btn {
     display: inline-block;
     color: #ffffff;
     background: linear-gradient(45deg, var(--primary), var(--secondary));
-    box-shadow: 0 0 10px rgba(255, 60, 0, 0.5);
+    box-shadow: 0 0 10px rgba(189, 0, 255, 0.5); /* Updated to match your primary color */
     padding: 0.7rem 1.7rem;
     border: none;
     border-radius: 4rem;
     font-size: 20px;
     transition: 0.5s ease-in-out;
-
 }
 
 /* Button hover effect */
-.hero-text .btn:hover{
+.hero-text .btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(255, 60, 0, 0.8);
-
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.8); /* Updated to match your secondary color */
 }
 /* cover section end */
 
-/* new release section  */
-h2{
+/* button section  */
+.category-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 10px;
+}
+.category-btn button {
+    background-color: var(--tertiary); /* Swapped red for your tertiary purple */
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 8px 16px; /* Added horizontal padding for better look */
+    cursor: pointer;
+    transition: 0.3s;
+}
+.category-btn button:hover {
+    background-color: var(--primary);
+    transform: scale(1.1);
+}
+/* button section ends */
+
+/* products section  */
+h2 {
     text-align: center;
     font-size: 1.5rem;
     font-weight: 600;
     margin-top: 30px;
     text-transform: uppercase;
-
+    color: #ffffff;
 }
 
 /* ── Cards Grid ── */
 .content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 15px;
 }
 
-/* ── Single Card ── */
+/* ── Single Card (Fixed comment syntax error) ── */
 .card {
     background-color: #1a1a2e;
     border: 1px solid #2a2a4a;
     border-radius: 10px;
     overflow: hidden;
-    transition: transform 0.2s;
     cursor: pointer;
+    transition: 0.3s ease-in-out; /* Cleaned up duplicate transition */
 }
 
 .card:hover {
-    transform: translateY(-4px);   
-    border-color: #7f77dd;
+    transform: translateY(-4px); 
+    border-color: var(--secondary); /* Used your secondary neon cyan here */
 }
 
 .card img {
     width: 100%;
-    height: 160px;
+    height: 180px;
+    border-radius: 10px 10px 0 0; /* Kept bottom corners flat to match card flow */
     object-fit: cover;            
 }
 
 .card h3 {
+    color: #ffffff;
     font-size: 0.95rem;
     padding: 10px 10px 4px;
 }
 
 .card p {
     font-size: 0.85rem;
-    color: #7f77dd;           
+    color: var(--secondary); /* Used your secondary color */          
     padding: 0 10px 8px;
     font-weight: 600;
 }
@@ -205,7 +234,7 @@ h2{
     display: block;
     width: calc(100% - 20px);
     margin: 0 10px 10px;
-    background-color: #534ab7;
+    background-color: var(--tertiary); /* Used your tertiary purple */
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -215,5 +244,5 @@ h2{
 }
 
 .card button:hover {
-    background-color: #7f77dd;
+    background-color: var(--primary); /* Hover swaps to neon primary */
 }
