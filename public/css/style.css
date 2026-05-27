@@ -246,3 +246,99 @@ h2 {
 .card button:hover {
     background-color: var(--primary); /* Hover swaps to neon primary */
 }
+
+/* About Section */
+#about {
+    margin-top: 20px;
+    background-color: #111;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+#about h2 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+#about > .about-container > p {
+    color: #aaa;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+}
+
+#about span {
+    color: #a020f0;
+    font-weight: bold;
+}
+
+.about-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.about-card {
+    background-color: #1a1a2e;
+    border: 1px solid #a020f0;
+    border-radius: 12px;
+    padding: 30px 20px;
+    width: 200px;
+    color: white;
+}
+
+.about-card i {
+    font-size: 2rem;
+    color: #a020f0;
+    margin-bottom: 15px;
+}
+
+.about-card h3 {
+    margin-bottom: 8px;
+}
+
+.about-card p {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+/* Footer */
+footer {
+    background-color: #0a0a0a;
+    padding: 30px 20px;
+    text-align: center;
+    border-top: 1px solid #a020f0;
+}
+
+.footer-logo {
+    color: #a020f0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+footer p {
+    color: #aaa;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #a020f0;
+}
+

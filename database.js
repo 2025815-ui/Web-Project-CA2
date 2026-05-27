@@ -9,7 +9,7 @@ const pool = sql.createPool({ //create pool for credentials
 });
 
 //check database status using query
-pool.query('SELECT * FROM products', (err, results) => { 
+pool.query('SELECT * FROM products WHERE id=1;', (err, results) => { 
     if (err) {
         console.error('Database connection failed. ' + err);
         return;

@@ -3,10 +3,17 @@ const router = express.Router();
 
 router.get('/products', (req, res) => {
 
-    const db = req.app.get('db');          //getting db from server
-    const sql = 'SELECT * FROM products';
+    const db = req.app.get('db'); //getting db from server
+    const {category} = req.query;
+    let sql = 'SELECT * FROM products';
+    let param = [];
 
-    db.query(sql, (err, results) => {
+    if(category) {
+        sql += ' WHERE category = ?';
+        param.push(category);
+    }
+
+    db.query(sql, param, (err, results) => {
         if (err) {
             console.log(err);
             res.status(500).send('Internal Server Error.')             // send JSON
