@@ -4,14 +4,18 @@ document.addEventListener('DOMContentLoaded', fetchProducts);
 function getSession() {
     let sid = localStorage.getItem('session_id');
     if (!sid) {
-        sid = 'session' + Math.random().toString(36).substr(2, 9);
+        sid = 'sess_' + Math.random().toString(36).substr(2, 11);
         localStorage.setItem('session_id', sid); 
     }
     return sid;
 }
 
+// ══════════════════════════════════════
+// Product PAGE (index.html)
+// ══════════════════════════════════════
 async function fetchProducts() {
     const productDiv = document.getElementById('content');
+      if (!productDiv) return;
     try {
         const response = await fetch('/api/products');
         if (!response.ok) throw new Error('Network response was not ok');
@@ -24,7 +28,7 @@ async function fetchProducts() {
                 <img src="${product.image}" alt="${product.name}">
                 <h3>${product.name}</h3>
                 <p>€${product.price}</p>
-                <button>Add To Cart</button>
+                <button onclick="addToBasket(${product.id})">Add To Cart</button>
             `;
             productDiv.appendChild(card);
         });
@@ -52,9 +56,92 @@ function renderGames(games) {
             <img src="${game.image}" alt="${game.name}">
             <h3>${game.name}</h3>
             <p>€${game.price}</p>
-            <button>Add To Cart</button>
+            <button onclick="addToBasket(${game.id})">Add To Cart</button>
         `;
         container.appendChild(card); 
     });
 }   
+
+// ── ADD TO BASKET ──
+async function addToBasket(productId) {
+    try {
+        const response = await fetch('/api/basket/add', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                session_id: getSession(),
+                product_id: productId,
+                quantity: 1
+            })
+        });
+
+        if (!response.ok) throw new Error('Failed to add item');
+
+        alert('Item added to basket!');
+
+    } catch (err) {
+        console.log(err);
+        alert('Could not add item to basket.');
+    }
+}
+
+// ══════════════════════════════════════
+// BASKET PAGE (basket.html)
+// ══════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('basket-items')) {
+        loadBasket();
+    }
+});
+
+async function loadBasket() {
+    const container = document.getElementById('basket-items');
+    const totalEl = document.getElementById('basket-total');
+    const checkoutBtn = document.getElementById('checkout-btn');
+
+    if (!container) return;
+
+    try {
+        const response = await fetch(`/api/basket/${getSession()}`);
+
+        if (!response.ok) throw new Error('Failed to fetch basket');
+
+        const items = await response.json();
+
+        container.innerHTML = '';
+        let total = 0;
+
+        if (items.length === 0) {
+            container.innerHTML = '<p>Your basket is empty.</p>';
+            totalEl.textContent = '';
+            if (checkoutBtn) checkoutBtn.style.display = 'none';
+            return;
+        }
+
+        if (checkoutBtn) checkoutBtn.style.display = 'inline-block';
+
+        items.forEach(item => {
+            const subtotal = (item.price * item.quantity).toFixed(2);
+            total += parseFloat(subtotal);
+
+            container.innerHTML += `
+                <div class="basket-row">
+                    <img src="${item.image}" alt="${item.name}" style="width:60px; border-radius:4px"/>
+                    <div class="basket-info">
+                        <span class="basket-name">${item.name}</span>
+                        <span class="basket-category">${item.category}</span>
+                        ${item.isNewRelease ? '<span class="badge">New Release</span>' : ''}
+                    </div>
+                    <span class="basket-qty">Qty: ${item.quantity}</span>
+                    <span class="basket-price">€${subtotal}</span>
+                    <button class="btn btn-remove" onclick="removeItem(${item.id})">Remove</button>
+                </div>`;
+        });
+
+        totalEl.textContent = `Total: €${total.toFixed(2)}`;
+
+    } catch (err) {
+        console.log(err);
+    }
+}
 

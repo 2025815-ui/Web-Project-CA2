@@ -1,345 +1,445 @@
-*{
-    margin: 0; /* remove default margin */
-    padding: 0; /* remove default padding */
-    box-sizing: border-box; /* include padding and border in the elements */
-    list-style: none; /* remove bullet from lists */
-    text-decoration: none; /* remove underlined from links */
-    font-family: 'Roboto', sans-serif; /* declare global font */
-    scroll-behavior: smooth; /*to smooth scrolling when clicking links */
+* {
+  margin: 0; /* remove default margin */
+  padding: 0; /* remove default padding */
+  box-sizing: border-box; /* include padding and border in the elements */
+  list-style: none; /* remove bullet from lists */
+  text-decoration: none; /* remove underlined from links */
+  font-family: "Roboto", sans-serif; /* declare global font */
+  scroll-behavior: smooth; /*to smooth scrolling when clicking links */
 }
 /* Define CSS Variables at the top */
 :root {
-    --primary: #BD00FF;
-    --secondary: #00F0FF;
-    --tertiary: #7000FF;
-    --neutral: #0A0A0C;
+  --primary: #bd00ff;
+  --secondary: #00f0ff;
+  --tertiary: #7000ff;
+  --neutral: #0a0a0c;
 }
 
-body{
-    background-color: var(--neutral);
+body {
+  background-color: var(--neutral);
 }
 
 /* nav section  */
 header {
-    width: 100%;
-    position: sticky; /* Sticky header stays at top when scrolling */
-    top: 0;
-    z-index: 999; /* to keep above every other elements */
+  width: 100%;
+  position: sticky; /* Sticky header stays at top when scrolling */
+  top: 0;
+  z-index: 999; /* to keep above every other elements */
 }
 
 /* Navbar container */
 nav {
-    display: flex; /* flex box layout */
-    justify-content: space-between; /* space between logo and links */
-    align-items: center;    /* vertically center items */
-    padding: 8px;
-    background-color: var(--neutral); /* Used your neutral color here */
+  display: flex; /* flex box layout */
+  justify-content: space-between; /* space between logo and links */
+  align-items: center; /* vertically center items */
+  padding: 8px;
+  background-color: var(--neutral); /* Used your neutral color here */
 }
 
 /* Logo styling */
 nav .logo {
-    color: #ffffff;
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-left: 16px;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-left: 16px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
 }
 
 /* Logo hover effect */
 nav .logo:hover {
-    color: var(--primary);
-    text-shadow: 0 0 10px var(--primary);
+  color: var(--primary);
+  text-shadow: 0 0 10px var(--primary);
 }
 
 /* Icon spacing */
 nav i {
-    margin-right: 5px; 
+  margin-right: 5px;
 }
 
 /* Navigation links container */
 .nav-link {
-    display: flex;
-    align-items: center;
-    gap: 20px; /* space between links */
-    margin-right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px; /* space between links */
+  margin-right: 20px;
 }
 
 /* Each nav item */
 .nav-link li {
-    position: relative; /* needed for underlined animation */
+  position: relative; /* needed for underlined animation */
 }
 
 /* Link style */
 .nav-link a {
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 400;
-    cursor: pointer;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
 }
 
 /* Underline animation (hidden by default) */
 .nav-link a::after {
-    content: "";
-    height: 2px;
-    width: 0; /* start invisible */
-    position: absolute;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
-    bottom: -4px;
-    left: 0;
-    transition: 0.5s;
+  content: "";
+  height: 2px;
+  width: 0; /* start invisible */
+  position: absolute;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  bottom: -4px;
+  left: 0;
+  transition: 0.5s;
 }
 
 /* On hover, expand underline */
 .nav-link a:hover::after {
-    width: 100%;
+  width: 100%;
 }
 /* nav section end */
 
-/* cover section  */
+/* cover section */
 .hero-container {
-    width: 100%;
-    min-height: 100vh; /* full screen size */
-    position: relative;
-    display: flex;
-    align-items: center;
-    /* background-color: var(--neutral); fallback color */
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Dark overlay for better text visibility */
+.hero-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  /* Left side darker, center lighter for character visibility */
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.8) 15%,
+    rgba(0, 0, 0, 0.45) 45%,
+    rgba(0, 0, 0, 0.15) 70%
+  );
+
+  z-index: 1;
 }
 
 /* Background image */
 .hero-container img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* behind content */
-    object-fit: cover; /* fill without distortion */
-    opacity: 1; /* Fixed: Reduced opacity so text is readable */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
 }
 
-/* Centered text */
+/* Hero text */
 .hero-container .hero-text {
-    margin-left: 30px; 
-    color: #ffffff; /* Ensures text is visible on dark background */
+  position: relative;
+  z-index: 2;
+
+  max-width: 550px;
+  margin-left: 7%;
+
+  color: #ffffff;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
 }
+
+/* Heading */
 .hero-text h1 {
-    font-size: 3rem;
-    font-weight: 800;
+  font-size: 4.5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 18px;
+
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+  background: linear-gradient(90deg, #ffffff, #00f0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+
+/* Paragraph */
 .hero-text p {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 20px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.7;
+  margin-bottom: 30px;
+
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Button styling */
 .hero-text .btn {
-    display: inline-block;
-    color: #ffffff;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
-    box-shadow: 0 0 10px rgba(189, 0, 255, 0.5); /* Updated to match your primary color */
-    padding: 0.7rem 1.7rem;
-    border: none;
-    border-radius: 4rem;
-    font-size: 20px;
-    transition: 0.5s ease-in-out;
+  display: inline-block;
+
+  padding: 0.9rem 2.3rem;
+  border-radius: 50px;
+
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  color: #ffffff;
+
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+
+  box-shadow: 0 0 15px rgba(189, 0, 255, 0.5);
+
+  transition: all 0.4s ease;
 }
 
-/* Button hover effect */
+/* Hover effect */
 .hero-text .btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.8); /* Updated to match your secondary color */
+  transform: translateY(-5px) scale(1.05);
+
+  box-shadow:
+    0 0 20px rgba(189, 0, 255, 0.6),
+    0 0 35px rgba(0, 240, 255, 0.8);
 }
 /* cover section end */
 
 /* button section  */
 .category-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin: 10px;
 }
 .category-btn button {
-    background-color: var(--tertiary); /* Swapped red for your tertiary purple */
-    color: white;
-    border: none;
-    border-radius: 25px;
-    padding: 8px 16px; /* Added horizontal padding for better look */
-    cursor: pointer;
-    transition: 0.3s;
+  background-color: var(--tertiary); /* Swapped red for your tertiary purple */
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 8px 16px; /* Added horizontal padding for better look */
+  cursor: pointer;
+  transition: 0.3s;
 }
 .category-btn button:hover {
-    background-color: var(--primary);
-    transform: scale(1.1);
+  background-color: var(--primary);
+  transform: scale(1.1);
 }
 /* button section ends */
 
 /* products section  */
 h2 {
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-top: 30px;
-    text-transform: uppercase;
-    color: #ffffff;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 30px;
+  text-transform: uppercase;
+  color: #ffffff;
 }
 
 /* ── Cards Grid ── */
 .content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-    width: 100%;
-    margin: 0 auto;
-    margin-top: 30px;
-    padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 15px;
 }
 
 /* ── Single Card (Fixed comment syntax error) ── */
 .card {
-    background-color: #1a1a2e;
-    border: 1px solid #2a2a4a;
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: 0.3s ease-in-out; /* Cleaned up duplicate transition */
+  background-color: #1a1a2e;
+  border: 1px solid #2a2a4a;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s ease-in-out; /* Cleaned up duplicate transition */
 }
 
 .card:hover {
-    transform: translateY(-4px); 
-    border-color: var(--secondary); /* Used your secondary neon cyan here */
+  transform: translateY(-4px);
+  border-color: var(--secondary); /* Used your secondary neon cyan here */
 }
 
 .card img {
-    width: 100%;
-    height: 180px;
-    border-radius: 10px 10px 0 0; /* Kept bottom corners flat to match card flow */
-    object-fit: cover;            
+  width: 100%;
+  height: 180px;
+  border-radius: 10px 10px 0 0; /* Kept bottom corners flat to match card flow */
+  object-fit: cover;
 }
 
 .card h3 {
-    color: #ffffff;
-    font-size: 0.95rem;
-    padding: 10px 10px 4px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  padding: 10px 10px 4px;
 }
 
 .card p {
-    font-size: 0.85rem;
-    color: var(--secondary); /* Used your secondary color */          
-    padding: 0 10px 8px;
-    font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--secondary); /* Used your secondary color */
+  padding: 0 10px 8px;
+  font-weight: 600;
 }
 
 .card button {
-    display: block;
-    width: calc(100% - 20px);
-    margin: 0 10px 10px;
-    background-color: var(--tertiary); /* Used your tertiary purple */
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s;
+  display: block;
+  width: calc(100% - 20px);
+  margin: 0 10px 10px;
+  background-color: var(--tertiary); /* Used your tertiary purple */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 .card button:hover {
-    background-color: var(--primary); /* Hover swaps to neon primary */
+  background-color: var(--primary); /* Hover swaps to neon primary */
 }
 
 /* About Section */
 #about {
-    margin-top: 20px;
-    background-color: #111;
-    padding: 60px 20px;
-    text-align: center;
+  margin-top: 20px;
+  background-color: #111;
+  padding: 60px 20px;
+  text-align: center;
 }
 
 #about h2 {
-    color: white;
-    font-size: 2rem;
-    margin-bottom: 15px;
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 15px;
 }
 
 #about > .about-container > p {
-    color: #aaa;
-    max-width: 600px;
-    margin: 0 auto 40px;
-    line-height: 1.7;
+  color: #aaa;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
 }
 
 #about span {
-    color: #a020f0;
-    font-weight: bold;
+  color: #a020f0;
+  font-weight: bold;
 }
 
 .about-cards {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
 .about-card {
-    background-color: #1a1a2e;
-    border: 1px solid #a020f0;
-    border-radius: 12px;
-    padding: 30px 20px;
-    width: 200px;
-    color: white;
+  background-color: #1a1a2e;
+  border: 1px solid #a020f0;
+  border-radius: 12px;
+  padding: 30px 20px;
+  width: 200px;
+  color: white;
 }
 
 .about-card i {
-    font-size: 2rem;
-    color: #a020f0;
-    margin-bottom: 15px;
+  font-size: 2rem;
+  color: #a020f0;
+  margin-bottom: 15px;
 }
 
 .about-card h3 {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .about-card p {
-    color: #aaa;
-    font-size: 0.9rem;
+  color: #aaa;
+  font-size: 0.9rem;
 }
 
 /* Footer */
 footer {
-    background-color: #0a0a0a;
-    padding: 30px 20px;
-    text-align: center;
-    border-top: 1px solid #a020f0;
+  background-color: #0a0a0a;
+  padding: 30px 20px;
+  text-align: center;
+  border-top: 1px solid #a020f0;
 }
 
 .footer-logo {
-    color: #a020f0;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
+  color: #a020f0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 footer p {
-    color: #aaa;
-    font-size: 0.85rem;
-    margin-bottom: 15px;
+  color: #aaa;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
 }
 
 .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 .footer-links a {
-    color: #aaa;
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.3s;
+  color: #aaa;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s;
 }
 
 .footer-links a:hover {
-    color: #a020f0;
+  color: #a020f0;
+}
+
+/* basket section  */
+.basket-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(112, 0, 255, 0.1);
+  border: 1px solid var(--tertiary);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.basket-row img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.basket-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.basket-name {
+  font-weight: bold;
+  color: var(--secondary);
+  font-size: 1rem;
+}
+
+.basket-category {
+  font-size: 0.85rem;
+  color: rgba(0, 240, 255, 0.6);
+  margin-top: 0.25rem;
+}
+
+.basket-qty {
+  color: white;
+  min-width: 60px;
+  text-align: center;
+}
+
+.basket-price {
+  color: var(--primary);
+  font-weight: bold;
+  min-width: 80px;
+  text-align: right;
 }
 
 /* Proceed to Checkout Button */

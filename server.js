@@ -13,7 +13,9 @@ app.use(express.static('public')); // use the public folder
 app.set('db',pool); //save database to app
 
 const homeRoute = require('./routes/products');
+const cartRoute = require('./routes/basket');
 app.use('/api',homeRoute);
+app.use('/api/basket',cartRoute);
 
 app.listen(3000 , () => {
     console.log("We are listening on port number 3000");
