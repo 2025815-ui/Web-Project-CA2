@@ -24,10 +24,48 @@
         </nav>
     </header>
     <!-- nav bar section ends -->
+
     
+    <!-- BASKET SECTION (visible by default) -->
+    <div id="basket-section" class="basket-section">
+      <h2>Your Basket</h2>
+      <div id="basket-items"></div>
+      <div id="basket-total"></div>
+      <br/>
+      <button class="btn" id="checkout-btn" onclick="showCheckout()">
+        Proceed to Checkout
+      </button>
+    </div>
 
+    <!-- CHECKOUT SECTION (hidden by default) -->
+    <div id="checkout-section" class="checkout-section" style="display:none;">
+      <h2>Checkout</h2>
 
+      <!-- Order Summary inside checkout -->
+      <div id="order-summary"></div>
 
+      <br/>
+      <form id="checkout-form" class="checkout-form">
+        <input type="text" id="full-name" placeholder="Full Name" required/>
+        <input type="email" id="email" placeholder="Email" required/>
+        <input type="text" id="address" placeholder="Address" required/>
+        <input type="text" id="card" placeholder="Card Number (demo)" required/>
+        <div class="form-buttons">
+          <button type="button" class="btn btn-back" onclick="hideCheckout()">
+            ← Back to Basket
+          </button>
+          <button type="submit" class="btn">Place Order</button>
+        </div>
+      </form>
+    </div>
+
+    <!--  ORDER CONFIRMATION (hidden by default) -->
+    <div id="confirmation-section" class="confirmation-section" style="display:none;">
+      <h2>Order Placed!</h2>
+      <p>Thank you for shopping with Game Store.</p>
+      <br/>
+      <a href="index.html" class="btn">Continue Shopping</a>
+    </div>
 
 
     <!-- about section -->
