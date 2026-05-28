@@ -47,14 +47,22 @@
       <br/>
       <form id="checkout-form" class="checkout-form">
         <input type="text" id="full-name" placeholder="Full Name" required/>
+        <span id="nameError" class="error-message"></span>
+
         <input type="email" id="email" placeholder="Email" required/>
+        <span id="emailError" class="error-message"></span>
+
         <input type="text" id="address" placeholder="Address" required/>
+        <span id="addressError" class="error-message"></span>
+
         <input type="text" id="card" placeholder="Card Number (demo)" required/>
+        <span id="cardError" class="error-message"></span>
+
         <div class="form-buttons">
           <button type="button" class="btn btn-back" onclick="hideCheckout()">
             ← Back to Basket
           </button>
-          <button type="submit" class="btn">Place Order</button>
+          <button type="button" class="btn" onclick="checkoutValidation()">Place Order</button>
         </div>
       </form>
     </div>

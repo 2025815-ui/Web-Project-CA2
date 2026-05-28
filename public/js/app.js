@@ -210,3 +210,81 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 //form validation
+async function checkoutValidation() {
+    // ── GET INPUT VALUES ──
+    let fullName = document.getElementById('full-name').value;
+    let email = document.getElementById('email').value;
+    let address = document.getElementById('address').value;
+    let card = document.getElementById('card').value;
+
+    // ── CLEAR PREVIOUS ERROR MESSAGES ──
+    document.getElementById('nameError').textContent = '';
+    document.getElementById('emailError').textContent = '';
+    document.getElementById('addressError').textContent = '';
+    document.getElementById('cardError').textContent = '';
+
+    let isValid = true;
+
+    // ── VALIDATE FULL NAME ──
+    let namePattern = /^[a-zA-Z\s]+$/;
+    if (fullName === '') {
+        document.getElementById('nameError').textContent = 'Full name must be filled.';
+        isValid = false;
+    } else if (fullName.length < 3) {
+        document.getElementById('nameError').textContent = 'Name must be at least 3 characters.';
+        isValid = false;
+    } else if (!namePattern.test(fullName)) {
+        document.getElementById('nameError').textContent = 'Name can only contain letters.';
+        isValid = false;
+    }
+
+    // ── VALIDATE EMAIL ──
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email === '') {
+        document.getElementById('emailError').textContent = 'Email address is required.';
+        isValid = false;
+    } else if (!emailPattern.test(email)) {
+        document.getElementById('emailError').textContent = 'Email address is invalid.';
+        isValid = false;
+    }
+
+    // ── VALIDATE ADDRESS ──
+    if (address === '') {
+        document.getElementById('addressError').textContent = 'Address is required.';
+        isValid = false;
+    } else if (address.length < 10) {
+        document.getElementById('addressError').textContent = 'Please enter a full address.';
+        isValid = false;
+    }
+
+    // ── VALIDATE CARD ──
+    let cardPattern = /^\d{16}$/;
+    if (card === '') {
+        document.getElementById('cardError').textContent = 'Card number is required.';
+        isValid = false;
+    } else if (!cardPattern.test(card.replace(/\s/g, ''))) {
+        document.getElementById('cardError').textContent = 'Card number must be 16 digits.';
+        isValid = false;
+    }
+
+    // ── STOP IF INVALID ──
+    if (!isValid) return false;
+
+    // ── SUBMIT IF VALID ──
+    try {
+        const response = await fetch(`/api/basket/clear/${getSession()}`, {
+            method: 'DELETE'
+        });
+
+        if (!response.ok) throw new Error('Failed to clear basket');
+
+        document.getElementById('checkout-section').style.display = 'none';
+        document.getElementById('confirmation-section').style.display = 'block';
+
+    } catch (err) {
+        console.log(err);
+        alert('Something went wrong. Please try again.');
+    }
+
+    return false; // ← prevents page reload
+}
