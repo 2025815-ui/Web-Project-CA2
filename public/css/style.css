@@ -469,12 +469,23 @@ footer p {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 2rem 1rem;
   text-align: center;
+  width: 100%;
 }
 
-.checkout-section form {
+.checkout-section h2 {
+  text-align: center;
+  color: var(--secondary);
+  margin-bottom: 1.5rem;
+}
+
+.checkout-form {
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
   gap: 1rem;
   width: 100%;
   max-width: 500px;
@@ -489,6 +500,7 @@ footer p {
   background: var(--neutral);
   color: var(--secondary);
   outline: none;
+  width: 100%;
 }
 
 .checkout-section input:focus {
@@ -504,6 +516,8 @@ footer p {
   display: flex;
   gap: 1rem;
   margin-top: 0.5rem;
+  justify-content: center;   /* ← centers the buttons */
+  width: 100%;
 }
 
 .btn-back {
@@ -521,14 +535,22 @@ footer p {
 }
 
 /* Order summary box */
+.order-summary {
+  display: flex;
+  justify-content: center;   /* ← centers the summary box */
+  width: 100%;
+}
+
 .summary-box {
   background: rgba(112, 0, 255, 0.1);
   border: 1px solid var(--tertiary);
   border-radius: 8px;
-  padding: 1rem;
+  padding: 1.5rem;
   box-shadow: 0 0 12px rgba(189, 0, 255, 0.2);
   margin-bottom: 1rem;
+  width: 100%;
   max-width: 500px;
+  text-align: center;        /* ← centers text inside box */
 }
 
 .summary-box h3 {
@@ -542,14 +564,22 @@ footer p {
 }
 
 .summary-box strong {
+  display: block;            /* ← puts total on its own line */
+  margin-top: 1rem;
   color: var(--primary);
   font-size: 1.1rem;
 }
 
 /* Confirmation section */
 .confirmation-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;          /* ← centers vertically on page */
   text-align: center;
   padding: 3rem 1rem;
+  width: 100%;
 }
 
 .confirmation-section h2 {

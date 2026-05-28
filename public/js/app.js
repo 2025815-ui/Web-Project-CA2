@@ -159,3 +159,27 @@ async function removeItem(id){
     }
 }
 
+// ══════════════════════════════════════
+// CHECKOUT (inside basket.html)
+// ══════════════════════════════════════
+
+function showCheckout(){
+    const totalText = document.getElementById('basket-total').textContent;
+    const basketItems = document.getElementById('basket-items').innerHTML;
+
+    document.getElementById('order-summary').innerHTML = `
+        <div class="summary-box">
+            <h3>Order Summary</h3>
+            ${basketItems}
+            <strong>${totalText}</strong>
+        </div>`;
+
+    document.getElementById('basket-section').style.display = 'none';
+    document.getElementById('checkout-section').style.display = 'block';
+}
+
+//hide checkout
+function hideCheckout(){
+    document.getElementById('checkout-section').style.display = 'none';
+    document.getElementById('basket-section').style.display = 'block';
+}
