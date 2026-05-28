@@ -183,3 +183,30 @@ function hideCheckout(){
     document.getElementById('checkout-section').style.display = 'none';
     document.getElementById('basket-section').style.display = 'block';
 }
+
+//place order 
+document.addEventListener('DOMContentLoaded', () => {
+    const checkoutFrom = document.getElementById('checkout-form');
+
+    if(!checkoutFrom) return;
+
+    checkoutFrom.addEventListener('submit', async function(e){
+        e.preventDefault();
+
+        try{
+            const response = await fetch(`/api/basket/clear/${getSession()}`, {
+                method : 'DELETE'
+            });
+
+            if(!response.ok) throw new Error("Failed to remove item");
+
+            document.getElementById('checkout-section').style.display = 'none';
+            document.getElementById('confirmation-section').style.display = 'block';
+        }catch(err){
+            console.log(err);
+            
+        }
+    })
+})
+
+//form validation
