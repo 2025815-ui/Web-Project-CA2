@@ -605,3 +605,212 @@ footer p {
     margin-bottom: 0.25rem;
     text-align: left;
 }
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+
+/* ── TABLET (max 1024px) ── */
+@media (max-width: 1024px) {
+
+    .hero-text h1 {
+        font-size: 3.5rem;
+    }
+
+    .content {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 220px));
+        gap: 12px;
+    }
+
+    .summary-box {
+        max-width: 600px;
+    }
+}
+
+/* ── MOBILE (max 768px) ── */
+@media (max-width: 768px) {
+
+    /* ── NAV ── */
+    nav {
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .nav-link {
+        gap: 12px;
+        margin-right: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* ── HERO ── */
+    .hero-container {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero-container .hero-text {
+        margin-left: 0;
+        padding: 0 1.5rem;
+        max-width: 100%;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    /* ── CATEGORY BUTTONS ── */
+    .category-btn {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 0 1rem;
+    }
+
+    /* ── PRODUCTS GRID ── */
+    .content {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 160px));
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .card img {
+        height: 140px;
+    }
+
+    /* ── ABOUT CARDS ── */
+    .about-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-card {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    /* ── BASKET ── */
+    .basket-row {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .basket-price {
+        min-width: auto;
+        text-align: left;
+    }
+
+    .basket-qty {
+        min-width: auto;
+    }
+
+    /* ── CHECKOUT ── */
+    .checkout-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .checkout-form {
+        max-width: 100%;
+    }
+
+    .summary-box {
+        max-width: 100%;
+        padding: 1rem;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+    }
+
+    .btn-back,
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* ── FOOTER ── */
+    .footer-links {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+}
+
+/* ── SMALL MOBILE (max 480px) ── */
+@media (max-width: 480px) {
+
+    /* ── HERO ── */
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .hero-text p {
+        font-size: 0.9rem;
+    }
+
+    .hero-text .btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* ── PRODUCTS ── */
+    .content {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 140px));
+        gap: 8px;
+    }
+
+    .card img {
+        height: 120px;
+    }
+
+    .card h3 {
+        font-size: 0.85rem;
+    }
+
+    .card p {
+        font-size: 0.8rem;
+    }
+
+    /* ── BASKET ── */
+    .basket-row img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .basket-name {
+        font-size: 0.9rem;
+    }
+
+    /* ── CHECKOUT ── */
+    .checkout-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .checkout-section input {
+        font-size: 0.9rem;
+        padding: 0.6rem;
+    }
+
+    /* ── CONFIRMATION ── */
+    .confirmation-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .confirmation-section p {
+        font-size: 0.95rem;
+    }
+
+    /* ── ABOUT ── */
+    #about h2 {
+        font-size: 1.5rem;
+    }
+
+    /* ── FOOTER ── */
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+    }
+}
