@@ -144,4 +144,18 @@ async function loadBasket() {
         console.log(err);
     }
 }
+//Remove item from basket
+async function removeItem(id){
+    try{
+        const response = await fetch (`/api/basket/remove/${id}`,{
+            method : 'DELETE'
+        });
+
+        if(!response.ok) throw new Error ("Failed to remove item.");
+        loadBasket();
+    }catch(err){
+        console.log(err);
+        
+    }
+}
 

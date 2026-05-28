@@ -76,5 +76,42 @@ router.post('/add', (req, res) => {
         }
     );
 });
+//remove each item in basket
+router.delete('/remove/:id', (req,res) => {
+    const db = req.app.get('db');
+    const id = req.params.id;
+
+    db.query(
+        'DELETE FROM BASKET WHERE id =?', [id],
+        (err) => {
+            if(err){
+                console.error("Database Error (DELETE) : " + err);
+                return res.status(500).json({ error: err.message });
+            }
+            res.json({ success: true, message: 'Item removed' });
+        }
+
+    );
+    
+});
+
+// Clear every basket
+router.delete('/clear/:sessionId', (req, res) => {
+    const db = req.app.get('db');
+    const sessionId = req.params.sessionId;
+
+    db.query(
+        'DELETE FROM basket WHERE session_id = ?',
+        [sessionId],
+        (err) => {
+            if (err) {
+                console.error("Database Error (CLEAR):", err);
+                return res.status(500).json({ error: err.message });
+            }
+            res.json({ success: true, message: 'Basket cleared' });
+        }
+    );
+});
+
 
 module.exports = router;
