@@ -1,54 +1,109 @@
+/* ══════════════════════════════════════
+   GLOBAL RESET
+══════════════════════════════════════ */
+
+/* Apply styles to all elements */
 * {
-  margin: 0; /* remove default margin */
-  padding: 0; /* remove default padding */
-  box-sizing: border-box; /* include padding and border in the elements */
-  list-style: none; /* remove bullet from lists */
-  text-decoration: none; /* remove underlined from links */
-  font-family: "Roboto", sans-serif; /* declare global font */
-  scroll-behavior: smooth; /*to smooth scrolling when clicking links */
+
+  margin: 0; /* Remove default browser margin */
+
+  padding: 0; /* Remove default browser padding */
+
+  box-sizing: border-box; 
+  /* Include padding and border inside width/height */
+
+  list-style: none; 
+  /* Remove bullets from lists */
+
+  text-decoration: none; 
+  /* Remove underline from links */
+
+  font-family: "Roboto", sans-serif; 
+  /* Set global font */
+
+  scroll-behavior: smooth; 
+  /* Smooth scrolling for anchor links */
 }
-/* Define CSS Variables at the top */
+
+/* ══════════════════════════════════════
+   CSS VARIABLES
+══════════════════════════════════════ */
 :root {
+
+  /* Main neon purple */
   --primary: #bd00ff;
+
+  /* Neon cyan */
   --secondary: #00f0ff;
+
+  /* Dark purple */
   --tertiary: #7000ff;
+
+  /* Dark background */
   --neutral: #0a0a0c;
 }
 
+/* Body background color */
 body {
   background-color: var(--neutral);
 }
 
-/* nav section  */
+/* ══════════════════════════════════════
+   HEADER / NAVIGATION
+══════════════════════════════════════ */
+
+/* Sticky header */
 header {
+
   width: 100%;
-  position: sticky; /* Sticky header stays at top when scrolling */
+
+  position: sticky; 
+  /* Keeps navbar visible while scrolling */
+
   top: 0;
-  z-index: 999; /* to keep above every other elements */
+
+  z-index: 999; 
+  /* Ensures navbar stays above other elements */
 }
 
-/* Navbar container */
+/* Navigation container */
 nav {
-  display: flex; /* flex box layout */
-  justify-content: space-between; /* space between logo and links */
-  align-items: center; /* vertically center items */
+
+  display: flex; 
+  /* Use Flexbox layout */
+
+  justify-content: space-between; 
+  /* Space between logo and links */
+
+  align-items: center; 
+  /* Vertically center items */
+
   padding: 8px;
-  background-color: var(--neutral); /* Used your neutral color here */
+
+  background-color: var(--neutral);
 }
 
 /* Logo styling */
 nav .logo {
+
   color: #ffffff;
+
   font-size: 1.5rem;
+
   font-weight: 600;
+
   margin-left: 16px;
+
   cursor: pointer;
+
   transition: 0.3s ease-in-out;
 }
 
 /* Logo hover effect */
 nav .logo:hover {
+
   color: var(--primary);
+
   text-shadow: 0 0 10px var(--primary);
 }
 
@@ -59,60 +114,95 @@ nav i {
 
 /* Navigation links container */
 .nav-link {
+
   display: flex;
+
   align-items: center;
-  gap: 20px; /* space between links */
+
+  gap: 20px; 
+  /* Space between links */
+
   margin-right: 20px;
 }
 
-/* Each nav item */
+/* Individual nav item */
 .nav-link li {
-  position: relative; /* needed for underlined animation */
+
+  position: relative; 
+  /* Needed for underline animation */
 }
 
-/* Link style */
+/* Nav link styling */
 .nav-link a {
+
   color: #ffffff;
+
   font-size: 16px;
+
   font-weight: 400;
+
   cursor: pointer;
 }
 
-/* Underline animation (hidden by default) */
+/* Animated underline effect */
 .nav-link a::after {
+
   content: "";
+
   height: 2px;
-  width: 0; /* start invisible */
+
+  width: 0; 
+  /* Hidden by default */
+
   position: absolute;
-  background: linear-gradient(45deg, var(--primary), var(--secondary));
+
+  background: linear-gradient(
+    45deg,
+    var(--primary),
+    var(--secondary)
+  );
+
   bottom: -4px;
+
   left: 0;
+
   transition: 0.5s;
 }
 
-/* On hover, expand underline */
+/* Expand underline on hover */
 .nav-link a:hover::after {
   width: 100%;
 }
-/* nav section end */
 
-/* cover section */
+/* ══════════════════════════════════════
+   HERO SECTION
+══════════════════════════════════════ */
+
+/* Main hero container */
 .hero-container {
+
   width: 100%;
+
   min-height: 100vh;
+
   position: relative;
+
   display: flex;
+
   align-items: center;
+
   overflow: hidden;
 }
 
-/* Dark overlay for better text visibility */
+/* Dark overlay for readability */
 .hero-container::before {
+
   content: "";
+
   position: absolute;
+
   inset: 0;
 
-  /* Left side darker, center lighter for character visibility */
   background: linear-gradient(
     to right,
     rgba(0, 0, 0, 0.8) 15%,
@@ -123,694 +213,1048 @@ nav i {
   z-index: 1;
 }
 
-/* Background image */
+/* Hero background image */
 .hero-container img {
+
   position: absolute;
+
   width: 100%;
+
   height: 100%;
+
   object-fit: cover;
+
   z-index: -1;
 }
 
-/* Hero text */
+/* Hero text container */
 .hero-container .hero-text {
+
   position: relative;
+
   z-index: 2;
 
   max-width: 550px;
+
   margin-left: 7%;
 
   color: #ffffff;
+
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
 }
 
-/* Heading */
+/* Hero heading */
 .hero-text h1 {
+
   font-size: 4.5rem;
+
   font-weight: 900;
+
   line-height: 1.1;
+
   margin-bottom: 18px;
 
   text-transform: uppercase;
+
   letter-spacing: 2px;
 
   background: linear-gradient(90deg, #ffffff, #00f0ff);
+
   -webkit-background-clip: text;
+
   -webkit-text-fill-color: transparent;
 }
 
-/* Paragraph */
+/* Hero paragraph */
 .hero-text p {
+
   font-size: 1.2rem;
+
   font-weight: 500;
+
   line-height: 1.7;
+
   margin-bottom: 30px;
 
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* Button styling */
+/* Hero button */
 .hero-text .btn {
+
   display: inline-block;
 
   padding: 0.9rem 2.3rem;
+
   border-radius: 50px;
 
   font-size: 1rem;
+
   font-weight: 700;
+
   letter-spacing: 1px;
+
   text-transform: uppercase;
-  text-decoration: none;
 
   color: #ffffff;
 
-  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  background: linear-gradient(
+    45deg,
+    var(--primary),
+    var(--secondary)
+  );
 
   box-shadow: 0 0 15px rgba(189, 0, 255, 0.5);
 
   transition: all 0.4s ease;
 }
 
-/* Hover effect */
+/* Hero button hover effect */
 .hero-text .btn:hover {
+
   transform: translateY(-5px) scale(1.05);
 
   box-shadow:
     0 0 20px rgba(189, 0, 255, 0.6),
     0 0 35px rgba(0, 240, 255, 0.8);
 }
-/* cover section end */
 
-/* button section  */
+/* ══════════════════════════════════════
+   CATEGORY BUTTONS
+══════════════════════════════════════ */
+
+/* Category button container */
 .category-btn {
+
   display: flex;
+
   justify-content: center;
+
   align-items: center;
+
   gap: 30px;
+
   margin: 10px;
 }
+
+/* Category buttons */
 .category-btn button {
-  background-color: var(--tertiary); /* Swapped red for your tertiary purple */
+
+  background-color: var(--tertiary);
+
   color: white;
+
   border: none;
+
   border-radius: 25px;
-  padding: 8px 16px; /* Added horizontal padding for better look */
+
+  padding: 8px 16px;
+
   cursor: pointer;
+
   transition: 0.3s;
 }
+
+/* Hover effect */
 .category-btn button:hover {
+
   background-color: var(--primary);
+
   transform: scale(1.1);
 }
-/* button section ends */
 
-/* products section  */
+/* ══════════════════════════════════════
+   PRODUCT SECTION
+══════════════════════════════════════ */
+
+/* Section heading */
 h2 {
+
   text-align: center;
+
   font-size: 1.5rem;
+
   font-weight: 600;
+
   margin-top: 30px;
+
   text-transform: uppercase;
+
   color: #ffffff;
 }
 
-/* ── Cards Grid ── */
+/* Product grid container */
 .content {
+
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(250px, 250px)
+  );
+
   gap: 15px;
+
   width: 100%;
+
   justify-content: center;
-  /* margin: 0 auto; */
+
   margin-top: 30px;
+
   padding: 15px;
 }
 
-/* ── Single Card (Fixed comment syntax error) ── */
+/* Product card */
 .card {
+
   background-color: #1a1a2e;
+
   border: 1px solid #2a2a4a;
+
   border-radius: 10px;
+
   overflow: hidden;
+
   cursor: pointer;
-  transition: 0.3s ease-in-out; /* Cleaned up duplicate transition */
+
+  transition: 0.3s ease-in-out;
 }
 
+/* Card hover effect */
 .card:hover {
+
   transform: translateY(-4px);
-  border-color: var(--secondary); /* Used your secondary neon cyan here */
+
+  border-color: var(--secondary);
 }
 
+/* Product image */
 .card img {
+
   width: 100%;
+
   height: 180px;
-  border-radius: 10px 10px 0 0; /* Kept bottom corners flat to match card flow */
+
+  border-radius: 10px 10px 0 0;
+
   object-fit: cover;
 }
 
+/* Product title */
 .card h3 {
+
   color: #ffffff;
+
   font-size: 0.95rem;
+
   padding: 10px 10px 4px;
 }
 
+/* Product price */
 .card p {
+
   font-size: 0.85rem;
-  color: var(--secondary); /* Used your secondary color */
+
+  color: var(--secondary);
+
   padding: 0 10px 8px;
+
   font-weight: 600;
 }
 
+/* Add to cart button */
 .card button {
+
   display: block;
+
   width: calc(100% - 20px);
+
   margin: 0 10px 10px;
-  background-color: var(--tertiary); /* Used your tertiary purple */
+
+  background-color: var(--tertiary);
+
   color: #fff;
+
   border: none;
+
   border-radius: 6px;
+
   padding: 8px;
+
   cursor: pointer;
+
   transition: background-color 0.2s;
 }
 
+/* Button hover */
 .card button:hover {
-  background-color: var(--primary); /* Hover swaps to neon primary */
+  background-color: var(--primary);
 }
 
-/* About Section */
+/* ══════════════════════════════════════
+   ABOUT SECTION
+══════════════════════════════════════ */
+
+/* About section container */
 #about {
+
   margin-top: 20px;
+
   background-color: #111;
+
   padding: 60px 20px;
+
   text-align: center;
 }
 
+/* About title */
 #about h2 {
+
   color: white;
+
   font-size: 2rem;
+
   margin-bottom: 15px;
 }
 
+/* About description */
 #about > .about-container > p {
+
   color: #aaa;
+
   max-width: 600px;
+
   margin: 0 auto 40px;
+
   line-height: 1.7;
 }
 
+/* Highlighted text */
 #about span {
+
   color: #a020f0;
+
   font-weight: bold;
 }
 
+/* About cards layout */
 .about-cards {
+
   display: flex;
+
   justify-content: center;
+
   gap: 30px;
+
   flex-wrap: wrap;
 }
 
+/* Single about card */
 .about-card {
+
   background-color: #1a1a2e;
+
   border: 1px solid #a020f0;
+
   border-radius: 12px;
+
   padding: 30px 20px;
+
   width: 200px;
+
   color: white;
 }
 
+/* About icons */
 .about-card i {
+
   font-size: 2rem;
+
   color: #a020f0;
+
   margin-bottom: 15px;
 }
 
+/* About card title */
 .about-card h3 {
   margin-bottom: 8px;
 }
 
+/* About card text */
 .about-card p {
+
   color: #aaa;
+
   font-size: 0.9rem;
 }
 
-/* Footer */
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+
+/* Footer container */
 footer {
+
   background-color: #0a0a0a;
+
   padding: 30px 20px;
+
   text-align: center;
+
   border-top: 1px solid #a020f0;
 }
 
+/* Footer logo */
 .footer-logo {
+
   color: #a020f0;
+
   font-size: 1.5rem;
+
   font-weight: bold;
+
   margin-bottom: 10px;
 }
 
+/* Footer text */
 footer p {
+
   color: #aaa;
+
   font-size: 0.85rem;
+
   margin-bottom: 15px;
 }
 
+/* Footer links container */
 .footer-links {
+
   display: flex;
+
   justify-content: center;
+
   gap: 20px;
 }
 
+/* Footer links */
 .footer-links a {
+
   color: #aaa;
-  text-decoration: none;
+
   font-size: 0.9rem;
+
   transition: color 0.3s;
 }
 
+/* Footer link hover */
 .footer-links a:hover {
   color: #a020f0;
 }
 
-/* basket section  */
-.basket-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background: rgba(112, 0, 255, 0.1);
-  border: 1px solid var(--tertiary);
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 0.75rem;
+/* ══════════════════════════════════════
+   BASKET SECTION
+══════════════════════════════════════ */
 
+/* Basket item row */
+.basket-row {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 1rem;
+
+  background: rgba(112, 0, 255, 0.1);
+
+  border: 1px solid var(--tertiary);
+
+  border-radius: 8px;
+
+  padding: 1rem;
+
+  margin-bottom: 0.75rem;
 }
 
+/* Basket image */
 .basket-row img {
+
   width: 60px;
+
   height: 60px;
+
   object-fit: cover;
+
   border-radius: 6px;
 }
 
+/* Basket info container */
 .basket-info {
+
   display: flex;
+
   flex-direction: column;
+
   flex: 1;
 }
 
+/* Basket product name */
 .basket-name {
+
   font-weight: bold;
+
   color: var(--secondary);
+
   font-size: 1rem;
 }
 
+/* Basket category */
 .basket-category {
+
   font-size: 0.85rem;
+
   color: rgba(0, 240, 255, 0.6);
+
   margin-top: 0.25rem;
 }
 
+/* Basket quantity */
 .basket-qty {
+
   color: white;
+
   min-width: 60px;
+
   text-align: center;
 }
 
+/* Basket price */
 .basket-price {
+
   color: var(--primary);
+
   font-weight: bold;
+
   min-width: 80px;
+
   text-align: right;
 }
 
-/* Proceed to Checkout Button */
+/* ══════════════════════════════════════
+   BUTTONS
+══════════════════════════════════════ */
+
+/* Main button */
 .btn {
+
   background: var(--primary);
+
   color: white;
+
   border: none;
+
   padding: 0.6rem 1.2rem;
+
   border-radius: 6px;
+
   cursor: pointer;
+
   font-size: 1rem;
+
   transition: all 0.3s ease;
 }
 
+/* Button hover effect */
 .btn:hover {
+
   background: var(--tertiary);
+
   box-shadow: 0 0 15px var(--primary);
+
   transform: scale(1.05);
 }
 
+/* Button click effect */
 .btn:active {
   transform: scale(0.98);
 }
 
-/* Checkout form layout */
+/* ══════════════════════════════════════
+   CHECKOUT SECTION
+══════════════════════════════════════ */
+
+/* Checkout container */
 .checkout-section {
+
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   justify-content: center;
+
   min-height: 60vh;
+
   padding: 2rem 1rem;
+
   text-align: center;
+
   width: 100%;
 }
 
+/* Checkout heading */
 .checkout-section h2 {
+
   text-align: center;
+
   color: var(--secondary);
+
   margin-bottom: 1.5rem;
 }
 
+/* Checkout form */
 .checkout-form {
+
   display: flex;
+
   flex-direction: column;
+
   margin: 0 auto;
+
   gap: 1rem;
+
   width: 100%;
+
   max-width: 500px;
+
   margin-top: 1rem;
 }
 
+/* Checkout input fields */
 .checkout-section input {
+
   padding: 0.7rem;
+
   border: 1px solid var(--tertiary);
+
   border-radius: 6px;
+
   font-size: 1rem;
+
   background: var(--neutral);
+
   color: var(--secondary);
+
   outline: none;
+
   width: 100%;
 }
 
+/* Input focus effect */
 .checkout-section input:focus {
+
   border-color: var(--primary);
+
   box-shadow: 0 0 8px var(--primary);
 }
 
+/* Placeholder styling */
 .checkout-section input::placeholder {
   color: rgba(0, 240, 255, 0.4);
 }
 
+/* Form button container */
 .form-buttons {
+
   display: flex;
+
   gap: 1rem;
+
   margin-top: 0.5rem;
-  justify-content: center;   /* ← centers the buttons */
+
+  justify-content: center;
+
   width: 100%;
 }
 
+/* Back button */
 .btn-back {
+
   background: var(--tertiary);
+
   color: white;
+
   border: none;
+
   padding: 0.6rem 1.2rem;
+
   border-radius: 6px;
+
   cursor: pointer;
 }
 
+/* Back button hover */
 .btn-back:hover {
+
   background: var(--primary);
+
   box-shadow: 0 0 10px var(--primary);
 }
 
-/* Order summary box */
+/* ══════════════════════════════════════
+   ORDER SUMMARY
+══════════════════════════════════════ */
+
+/* Order summary wrapper */
 .order-summary {
+
   display: flex;
-  justify-content: center;   /* ← centers the summary box */
+
+  justify-content: center;
+
   width: 100%;
 }
 
+/* Summary box */
 .summary-box {
+
   background: rgba(112, 0, 255, 0.1);
+
   border: 1px solid var(--tertiary);
+
   border-radius: 8px;
+
   padding: 1.5rem;
+
   box-shadow: 0 0 12px rgba(189, 0, 255, 0.2);
+
   margin-bottom: 1rem;
+
   width: 100%;
+
   max-width: 800px;
-  text-align: center;        /* ← centers text inside box */
+
+  text-align: center;
 }
 
+/* Summary heading */
 .summary-box h3 {
+
   margin-bottom: 0.5rem;
+
   color: var(--secondary);
 }
 
+/* Summary text */
 .summary-box p,
 .summary-box span {
+
   color: rgba(0, 240, 255, 0.8);
 }
 
+/* Total amount */
 .summary-box strong {
-  display: block;            /* ← puts total on its own line */
+
+  display: block;
+
   margin-top: 1rem;
+
   color: var(--primary);
+
   font-size: 1.1rem;
-}
-
-/* Confirmation section */
-.confirmation-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 60vh;          /* ← centers vertically on page */
-  text-align: center;
-  padding: 3rem 1rem;
-  width: 100%;
-}
-
-.confirmation-section h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: var(--secondary);
-  text-shadow: 0 0 12px var(--secondary);
-}
-
-.confirmation-section p {
-  color: rgba(0, 240, 255, 0.7);
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-}
- /* form validation error message  */
-.error-message {
-    display: block;
-    color: #ff4d4d;
-    font-size: 0.8rem;
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
-    text-align: left;
 }
 
 /* ══════════════════════════════════════
-   RESPONSIVE
+   CONFIRMATION SECTION
 ══════════════════════════════════════ */
 
-/* ── TABLET (max 1024px) ── */
+/* Confirmation page */
+.confirmation-section {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 60vh;
+
+  text-align: center;
+
+  padding: 3rem 1rem;
+
+  width: 100%;
+}
+
+/* Confirmation title */
+.confirmation-section h2 {
+
+  font-size: 2rem;
+
+  margin-bottom: 1rem;
+
+  color: var(--secondary);
+
+  text-shadow: 0 0 12px var(--secondary);
+}
+
+/* Confirmation text */
+.confirmation-section p {
+
+  color: rgba(0, 240, 255, 0.7);
+
+  font-size: 1.1rem;
+
+  margin-bottom: 1.5rem;
+}
+
+/* ══════════════════════════════════════
+   FORM VALIDATION
+══════════════════════════════════════ */
+
+/* Error message styling */
+.error-message {
+
+  display: block;
+
+  color: #ff4d4d;
+
+  font-size: 0.8rem;
+
+  margin-top: 0.25rem;
+
+  margin-bottom: 0.25rem;
+
+  text-align: left;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE DESIGN
+══════════════════════════════════════ */
+
+/* ─────────────────────────────────────
+   TABLET DEVICES
+───────────────────────────────────── */
 @media (max-width: 1024px) {
 
-    .hero-text h1 {
-        font-size: 3.5rem;
-    }
+  /* Smaller hero heading */
+  .hero-text h1 {
+    font-size: 3.5rem;
+  }
 
-    .content {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 220px));
-        gap: 12px;
-    }
+  /* Smaller product cards */
+  .content {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(220px, 220px)
+    );
+    gap: 12px;
+  }
 
-    .summary-box {
-        max-width: 600px;
-    }
+  /* Smaller summary box */
+  .summary-box {
+    max-width: 600px;
+  }
 }
 
-/* ── MOBILE (max 768px) ── */
+/* ─────────────────────────────────────
+   MOBILE DEVICES
+───────────────────────────────────── */
 @media (max-width: 768px) {
 
-    /* ── NAV ── */
-    nav {
-        flex-direction: column;
-        gap: 10px;
-        padding: 12px;
-    }
+  /* Stack navbar vertically */
+  nav {
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+  }
 
-    .nav-link {
-        gap: 12px;
-        margin-right: 0;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+  /* Wrap nav links */
+  .nav-link {
+    gap: 12px;
+    margin-right: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-    /* ── HERO ── */
-    .hero-container {
-        justify-content: center;
-        text-align: center;
-    }
+  /* Center hero content */
+  .hero-container {
+    justify-content: center;
+    text-align: center;
+  }
 
-    .hero-container .hero-text {
-        margin-left: 0;
-        padding: 0 1.5rem;
-        max-width: 100%;
-    }
+  .hero-container .hero-text {
+    margin-left: 0;
+    padding: 0 1.5rem;
+    max-width: 100%;
+  }
 
-    .hero-text h1 {
-        font-size: 2.5rem;
-    }
+  /* Reduce hero text size */
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
 
-    .hero-text p {
-        font-size: 1rem;
-    }
+  .hero-text p {
+    font-size: 1rem;
+  }
 
-    /* ── CATEGORY BUTTONS ── */
-    .category-btn {
-        flex-wrap: wrap;
-        gap: 10px;
-        padding: 0 1rem;
-    }
+  /* Wrap category buttons */
+  .category-btn {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0 1rem;
+  }
 
-    /* ── PRODUCTS GRID ── */
-    .content {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 160px));
-        gap: 10px;
-        padding: 10px;
-    }
+  /* Smaller product grid */
+  .content {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(160px, 160px)
+    );
+    gap: 10px;
+    padding: 10px;
+  }
 
-    .card img {
-        height: 140px;
-    }
+  /* Smaller product image */
+  .card img {
+    height: 140px;
+  }
 
-    /* ── ABOUT CARDS ── */
-    .about-cards {
-        flex-direction: column;
-        align-items: center;
-    }
+  /* Stack about cards */
+  .about-cards {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .about-card {
-        width: 100%;
-        max-width: 300px;
-    }
+  .about-card {
+    width: 100%;
+    max-width: 300px;
+  }
 
-    /* ── BASKET ── */
-    .basket-row {
-        flex-wrap: wrap;
-        gap: 0.75rem;
-    }
+  /* Basket responsiveness */
+  .basket-row {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
 
-    .basket-price {
-        min-width: auto;
-        text-align: left;
-    }
+  .basket-price,
+  .basket-qty {
+    min-width: auto;
+    text-align: left;
+  }
 
-    .basket-qty {
-        min-width: auto;
-    }
+  /* Checkout adjustments */
+  .checkout-section {
+    padding: 1.5rem 1rem;
+  }
 
-    /* ── CHECKOUT ── */
-    .checkout-section {
-        padding: 1.5rem 1rem;
-    }
+  .checkout-form {
+    max-width: 100%;
+  }
 
-    .checkout-form {
-        max-width: 100%;
-    }
+  .summary-box {
+    max-width: 100%;
+    padding: 1rem;
+  }
 
-    .summary-box {
-        max-width: 100%;
-        padding: 1rem;
-    }
+  /* Stack form buttons */
+  .form-buttons {
+    flex-direction: column;
+  }
 
-    .form-buttons {
-        flex-direction: column;
-    }
+  .btn-back,
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
 
-    .btn-back,
-    .btn {
-        width: 100%;
-        text-align: center;
-    }
-
-    /* ── FOOTER ── */
-    .footer-links {
-        flex-wrap: wrap;
-        gap: 12px;
-    }
+  /* Footer links wrap */
+  .footer-links {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
 }
 
-/* ── SMALL MOBILE (max 480px) ── */
+/* ─────────────────────────────────────
+   SMALL MOBILE DEVICES
+───────────────────────────────────── */
 @media (max-width: 480px) {
 
-    /* ── HERO ── */
-    .hero-text h1 {
-        font-size: 2rem;
-    }
+  /* Smaller hero heading */
+  .hero-text h1 {
+    font-size: 2rem;
+  }
 
-    .hero-text p {
-        font-size: 0.9rem;
-    }
+  .hero-text p {
+    font-size: 0.9rem;
+  }
 
-    .hero-text .btn {
-        padding: 0.7rem 1.5rem;
-        font-size: 0.9rem;
-    }
+  /* Smaller hero button */
+  .hero-text .btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
 
-    /* ── PRODUCTS ── */
-    .content {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 140px));
-        gap: 8px;
-    }
+  /* Smaller product cards */
+  .content {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(140px, 140px)
+    );
+    gap: 8px;
+  }
 
-    .card img {
-        height: 120px;
-    }
+  .card img {
+    height: 120px;
+  }
 
-    .card h3 {
-        font-size: 0.85rem;
-    }
+  .card h3 {
+    font-size: 0.85rem;
+  }
 
-    .card p {
-        font-size: 0.8rem;
-    }
+  .card p {
+    font-size: 0.8rem;
+  }
 
-    /* ── BASKET ── */
-    .basket-row img {
-        width: 50px;
-        height: 50px;
-    }
+  /* Smaller basket image */
+  .basket-row img {
+    width: 50px;
+    height: 50px;
+  }
 
-    .basket-name {
-        font-size: 0.9rem;
-    }
+  .basket-name {
+    font-size: 0.9rem;
+  }
 
-    /* ── CHECKOUT ── */
-    .checkout-section h2 {
-        font-size: 1.5rem;
-    }
+  /* Smaller checkout heading */
+  .checkout-section h2 {
+    font-size: 1.5rem;
+  }
 
-    .checkout-section input {
-        font-size: 0.9rem;
-        padding: 0.6rem;
-    }
+  .checkout-section input {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
 
-    /* ── CONFIRMATION ── */
-    .confirmation-section h2 {
-        font-size: 1.5rem;
-    }
+  /* Smaller confirmation text */
+  .confirmation-section h2 {
+    font-size: 1.5rem;
+  }
 
-    .confirmation-section p {
-        font-size: 0.95rem;
-    }
+  .confirmation-section p {
+    font-size: 0.95rem;
+  }
 
-    /* ── ABOUT ── */
-    #about h2 {
-        font-size: 1.5rem;
-    }
+  /* Smaller about heading */
+  #about h2 {
+    font-size: 1.5rem;
+  }
 
-    /* ── FOOTER ── */
-    .footer-links {
-        flex-direction: column;
-        align-items: center;
-    }
+  /* Stack footer links */
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+  }
 }
